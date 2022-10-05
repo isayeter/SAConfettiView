@@ -46,7 +46,7 @@ public class SAConfettiView: UIView {
         active = false
     }
 
-    public func startConfetti() {
+    public func startConfetti() -> CAEmitterLayer {
         emitter = CAEmitterLayer()
 
         emitter.emitterPosition = CGPoint(x: frame.size.width / 2.0, y: 0)
@@ -61,10 +61,12 @@ public class SAConfettiView: UIView {
         emitter.emitterCells = cells
         layer.addSublayer(emitter)
         active = true
+        
+        return emitter
     }
 
-    public func stopConfetti() {
-        emitter?.birthRate = 0
+    public func stopConfetti(emitterx: CAEmitterLayer) {
+        emitterx.birthRate = 0
         active = false
     }
 
